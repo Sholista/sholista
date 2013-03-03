@@ -3,8 +3,8 @@
 class SimpleUPCAPI
 {
 
-    $SimpleUPCAPIKey = 'CrlRcFVoXg51XNwPt0HoS5aPHSshWsPT';
-    $url = "http://api.simpleupc.com/v1.php";
+    var $SimpleUPCAPIKey = 'CrlRcFVoXg51XNwPt0HoS5aPHSshWsPT';
+    var $url = "http://api.simpleupc.com/v1.php";
     
     public function fetchImage($upc){
 	$request = array("auth"=>$SimpleUPCAPIKey,
