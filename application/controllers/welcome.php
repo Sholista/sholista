@@ -19,7 +19,10 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+        $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
+		$this->load->view('templates/header', $header);
+		$this->load->view('index');
+		$this->load->view('templates/footer');
 	}
 }
 
