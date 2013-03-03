@@ -1,3 +1,5 @@
 .noinstall
+.git
 user_guide
 Makefile
+.*.swp
