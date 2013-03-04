@@ -29,6 +29,8 @@ class Product extends CI_Controller {
 			// extract values nd loop again if needed
 			$store[$j]['name']=$storeInstance->Storename;
 			$store[$j]['storeid']=$storeInstance->StoreId;
+			$store[$j]['address']=$storeInstance->Address;
+			$store[$j]['city']=$storeInstance->City;
 			$j++;
 			}
 		log_message("info", "Store array is : " . print_r($store, true));
@@ -39,10 +41,10 @@ class Product extends CI_Controller {
 			for($l=0;$l < sizeof($itemIds); $l++) {
 				$productsURL="http://www.supermarketapi.com/api.asmx/SearchForItem?APIKEY=" . SuperMarketAPIKey.	
 					"&ItemName=" . urlencode($itemIds[$l]) . "&StoreId=" . $store[$k]['storeid']; 
-	    		log_message("info", "URL is " . $productsURL);
+	    		//log_message("info", "URL is " . $productsURL);
 				$productPrices=file_get_contents($productsURL);	
-				log_message("Info", "product response for storeID " . $store[$k]['storeid'] . " and product " . $itemIds[$l]
-							. " is " . print_r($productPrices, true));
+				//log_message("Info", "product response for storeID " . $store[$k]['storeid'] . " and product " . $itemIds[$l]
+							//. " is " . print_r($productPrices, true));
 				$xml = simplexml_load_string($productPrices);
 				log_message("Info", "Simple XML is " . print_r($xml, true));
 			}
