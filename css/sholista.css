@@ -17,3 +17,7 @@
     max-width: 60px;
     max-height: 60px;
 }
+
+#cart > div {
+    display: inline-block;
+}
