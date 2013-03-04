@@ -3,18 +3,18 @@
 class SimpleUPCAPI
 {
 
-    var $SimpleUPCAPIKey = 'CrlRcFVoXg51XNwPt0HoS5aPHSshWsPT';
-    var $url = "http://api.simpleupc.com/v1.php";
+    private static $SimpleUPCAPIKey = 'CrlRcFVoXg51XNwPt0HoS5aPHSshWsPT';
+    private static $url = "http://api.simpleupc.com/v1.php";
     
     public function fetchImage($upc){
-	$request = array("auth"=>$SimpleUPCAPIKey,
+	$request = array("auth"=>self::$SimpleUPCAPIKey,
 			"method"=>'FetchImageByUPC',
 			"params"=>array("upc"=>$upc,),
 				);
 
 	$json = json_encode ($request);
 
-	$ch = curl_init($url);
+	$ch = curl_init(self::$url);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/json'));
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "$json");
@@ -26,14 +26,14 @@ class SimpleUPCAPI
     }//fetchImage
 
     public function fetchNutrition($upc){
-	$request = array("auth"=>$SimpleUPCAPIKey,
+	$request = array("auth"=>self::$SimpleUPCAPIKey,
 			"method"=>'FetchNutritionFactsByUPC',
 			"params"=>array("upc"=>$upc,),
 				);
 
 	$json = json_encode ($request);
 
-	$ch = curl_init($url);
+	$ch = curl_init(self::$url);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/json'));
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "$json");
@@ -45,7 +45,7 @@ class SimpleUPCAPI
     }//fetchNutrition
 
 public function searchProduct($query){
-	$request = array ( "auth"=>$SimpleUPCAPIKey,
+	$request = array ( "auth"=>self::$SimpleUPCAPIKey,
                            "method"=>'FetchProducts',
                            "params"=> array("search"=> $query,
         	               "field" => 'description',
@@ -58,7 +58,7 @@ public function searchProduct($query){
 
 	$json = json_encode ($request);
 
-	$ch = curl_init($url);
+	$ch = curl_init(self::$url);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/json'));
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "$json");
@@ -70,14 +70,14 @@ public function searchProduct($query){
     }//fetchProduct
 
 public function fetchProductByUPC($upc){
-	$request = array("auth"=>$SimpleUPCAPIKey,
+	$request = array("auth"=>self::$SimpleUPCAPIKey,
 			"method"=>'FetchProductByUPC',
 			"params"=>array("upc"=>$upc,),
 				);
 
 	$json = json_encode ($request);
 
-	$ch = curl_init($url);
+	$ch = curl_init(self::$url);
 	curl_setopt($ch, CURLOPT_POST, 1);
 	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: text/json'));
 	curl_setopt($ch, CURLOPT_POSTFIELDS, "$json");
