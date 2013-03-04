@@ -3,7 +3,7 @@
     	<?php include('templates/page_header.php')?>
     </div>
     <div data-role="content">
-        Shelf: Drag to add items from here to the cart below
+        Shelf: Add items by dragging to the list below
         <div style="overflow-x: scroll">
 		<div id="shelf">
         <?php
@@ -15,16 +15,54 @@
         ?>
 		</div>
         </div>
-        Cart: Drag to remove items from here to the shelf above
+        Shoplist: Remove items by dragging to the shelf above
         <div style="overflow-x: scroll">
-		<div id="cart">
+		<div id="shoplist">
 		</div>
         </div>
-        <a data-role="button" href="#empty">Shop</a>
+        <a data-role="button" href="#shop">Shop</a>
     </div>
     <div data-role="footer">
     </div>
 </div>
+
+
+<div data-role="page" id="shop">
+    <div data-role="header">
+    <?php include('templates/page_header.php')?>
+    </div>
+    <div data-role="content">
+    Your Shoplist:
+    <div id="checkoutlist"></div>
+    </div>
+    <div data-role="footer">
+    </div>
+    <a data-role="button" href="#index">Back</a>
+</div>
+
+<script type="text/javascript">
+$('#shop').live('pageshow', function(e, d) {
+        $('#checkoutlist').empty();
+        var pdata = { shoplist: [] };
+        $('#shoplist img').each(function(i, img) {
+            $('#checkoutlist').append(img2CartDisplay($(img)));
+                pdata.shoplist.push({ id: img.name, qty: $(img).next().html() });
+            });
+
+        // post the shoplist to server
+        $.ajax('/index.php/shoplist',
+                {
+                    type: 'POST',
+                    data: pdata
+                }
+            ).done(function(msg) {
+                console.log(msg);
+                });
+
+    });
+</script>
+
+
 <div data-role="page" id="empty">
     <div data-role="header">
     <?php include('templates/page_header.php')?>

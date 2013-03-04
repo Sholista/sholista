@@ -7,7 +7,7 @@
     width: 60px;
 }
 
-#shelf, #cart {
+#shelf, #shoplist {
     background-color: white;
     height: 110px;
     width: 1600px;
@@ -23,6 +23,6 @@
     text-align: center;
 }
 
-#cart > div {
+#shoplist > div, #checkoutlist > div {
     display: inline-block;
 }
