@@ -6,15 +6,13 @@
         Shelf: Drag to add items from here to the cart below
         <div style="overflow-x: scroll">
 		<div id="shelf">
-            <img name="1" class="onshelf item" src="/img/Apples.jpeg" />
-            <img name="2" class="onshelf item" src="/img/Bananas.jpeg" />
-            <img name="3" class="onshelf item" src="/img/Cauliflower.jpeg" />
-            <img name="4" class="onshelf item" src="/img/Apples.jpeg" />
-            <img name="5" class="onshelf item" src="/img/Bananas.jpeg" />
-            <img name="6" class="onshelf item" src="/img/Cauliflower.jpeg" />
-            <img name="7" class="onshelf item" src="/img/Apples.jpeg" />
-            <img name="8" class="onshelf item" src="/img/Bananas.jpeg" />
-            <img name="9" class="onshelf item" src="/img/Cauliflower.jpeg" />
+        <?php
+            foreach ($products as $prod) {
+        ?>
+                <img name="<?=$prod->ItemId?>" src="/img/<?=$prod->ItemImageName?>" class="onshelf item" />
+        <?php
+            }
+        ?>
 		</div>
         </div>
         Cart: Drag to remove items from here to the shelf above
