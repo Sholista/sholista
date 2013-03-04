@@ -38,6 +38,7 @@ function cartDrop(e, ui) {
         item[0].count = 1;
 
         var count = $(document.createElement('div'));
+        count.addClass('item-count');
         count.html(item[0].count);
 
         var cart_display = $(document.createElement('div'));
