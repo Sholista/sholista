@@ -5,9 +5,9 @@
     <div data-role="content">
         Shelf: Drag to add items from here to the cart below
 		<div id="shelf">
-            <img class="item" src="/img/Apples.jpeg" />
-            <img class="item" src="/img/Bananas.jpeg" />
-            <img class="item" src="/img/Cauliflower.jpeg" />
+            <img name="1" class="onshelf item" src="/img/Apples.jpeg" />
+            <img name="2" class="onshelf item" src="/img/Bananas.jpeg" />
+            <img name="3" class="onshelf item" src="/img/Cauliflower.jpeg" />
 		</div>
         Cart: Drag to remove items from here to the shelf above
 		<div id="cart">

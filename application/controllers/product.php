@@ -51,7 +51,14 @@ class Product extends CI_Controller {
         $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
 		$this->load->view('templates/header', $header);
 		$this->load->view('product');
-		echo print_r($SimpleUPCAPIresult, true);
 		$this->load->view('templates/footer');
 	}
+
+
+    public function test() {
+        $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
+		$this->load->view('templates/header', $header);
+		$this->load->view('product');
+		$this->load->view('templates/footer');
+    }
 }
