@@ -4,6 +4,7 @@ class Products extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Product');
+        $this->load->model('Store');
     }
 
 	public function index()
@@ -30,14 +31,16 @@ class Products extends CI_Controller {
 		$stores = $xml->Store;
 		log_message("info" , "XML object array is: " . print_r($xml, true));
 		$j=0;
+        $s = new Store();
 		foreach($stores as $i => $storeInstance) {
 			// extract values nd loop again if needed
-			$store[$j]['name']=$storeInstance->Storename;
-			$store[$j]['storeid']=$storeInstance->StoreId;
-			$store[$j]['address']=$storeInstance->Address;
-			$store[$j]['city']=$storeInstance->City;
+			$store[$j]['name']="$storeInstance->Storename";
+			$store[$j]['storeid']="$storeInstance->StoreId";
+			$store[$j]['address']="$storeInstance->Address";
+			$store[$j]['city']="$storeInstance->City";
+            //$s->add($store[$j]);
 			$j++;
-			}
+        }
 		log_message("info", "Store array is : " . print_r($store, true));
 		$itemIds=array ("Grapes Black Seedless");
 		log_message("info", "ItemIds array is : " . print_r($itemIds, true));
@@ -56,8 +59,10 @@ class Products extends CI_Controller {
 		}
 
         $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
+        $p = new Product();
+        $header['products'] = $p->all();
 		$this->load->view('templates/header', $header);
-		$this->load->view('product');
+		$this->load->view('products', $header);
 		$this->load->view('templates/footer');
 	}
 

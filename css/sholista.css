@@ -9,14 +9,14 @@
 
 #shelf, #cart {
     background-color: white;
-    height: 100px;
-    width: 1000px;
+    height: 110px;
+    width: 1600px;
 }
 
 
 .item {
-    max-width: 60px;
-    max-height: 60px;
+    max-width: 80px;
+    max-height: 80px;
 }
 
 .item-count {
