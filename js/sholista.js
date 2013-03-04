@@ -3,9 +3,9 @@ $('#index').live('pageinit', function() {
     });
 
 function pageSetup() {
-    $('#shelf').droppable({ scope: 'shelf' });
-    $('#cart').droppable({ scope: 'cart' });
-    var itemDragSpec = { helper: 'clone', stop: cartDrop, revert: 'invalid',
+    $('#shelf').droppable({ scope: 'shelf', drop: shelfDrop });
+    $('#cart').droppable({ scope: 'cart', drop: cartDrop });
+    var itemDragSpec = { helper: 'clone', revert: 'invalid',
                             appendTo: 'body', zIndex: 10000, scope: 'cart' }
     $('.item').each(function() {
             $(this).draggable(itemDragSpec);
@@ -24,8 +24,7 @@ function cartDrop(e, ui) {
     item.css('left', '0');
     item.removeClass('onshelf');
     item.addClass('incart');
-    item.draggable({helper: 'clone', stop: shelfDrop, revert: 'invalid',
-                        scope: 'shelf'});
+    item.draggable({helper: 'clone', revert: 'invalid', scope: 'shelf'});
 
     // see if the item already exists
     var existing = $('#cart img[name="' + item.prop('name') + 

@@ -20,7 +20,7 @@
 		<div id="cart">
 		</div>
         </div>
-        <a data-role="button" href="#empty">Next</a>
+        <a data-role="button" href="#empty">Shop</a>
     </div>
     <div data-role="footer">
     </div>
