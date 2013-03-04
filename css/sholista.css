@@ -1,5 +1,16 @@
 #logo {
+    width: 100%;
     text-align: center;
+}
+
+#logo tr td > * {
+    vertical-align: middle;
+}
+
+#logotext {
+    font-size: 2em;
+    font-weight: bold;
+    padding-left: 1em;
 }
 
 #logo img {

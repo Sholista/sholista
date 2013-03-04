@@ -7,7 +7,7 @@ class Products extends CI_Controller {
         $this->load->model('Store');
     }
 
-	public function index()
+	public function blah()
 	{
 	    //SimpleUPCAPI
 		$query=$this->input->get('query');
@@ -67,7 +67,7 @@ class Products extends CI_Controller {
 	}
 
 
-    public function test() {
+    public function index() {
         $p = new Product();
         $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
         $header['products'] = $p->all();

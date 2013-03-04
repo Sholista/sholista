@@ -15,7 +15,7 @@ class Product extends CI_Model {
                 array_reduce($shoplist, function($result, $item) {
                     return (empty($result) ? '' : "$result,") . $item['id'];
                     }, '') . ')';
-        //log_message('info', "Query $query");
+        log_message('info', "Query $query");
         $res = $this->db->query($query);
         return $res->result();
     }

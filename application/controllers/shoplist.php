@@ -46,32 +46,34 @@ class ShopList extends REST_controller {
         // create the per-store totals array 
         $totals = array_reduce($pricelist, function($result, $item) {
                 log_message('info', 'Item is ' . print_r($item, true));
-                $result['Safeway_price'] += $item['Safeway_price'];
-                $result['Luckys_price'] += $item['Luckys_price'];
-                $result['TraderJoes_price'] += $item['TraderJoes_price'];
-                $result['FoodsCo_price'] += $item['FoodsCo_price'];
-                $result['MollieStonesMarket_price'] += $item['MollieStonesMarket_price'];
-                $result['AndronicosCommunityMarket_price'] += $item['AndronicosCommunityMarket_price'];
-                $result['TheRealFoodCompany_price'] += $item['TheRealFoodCompany_price'];
-                $result['CALAFoods_price'] += $item['CALAFoods_price'];
-                $result['LuckySupermarkets_price'] += $item['LuckySupermarkets_price'];
+                $result['Safeway'] += $item['Safeway_price'];
+                $result['Luckys'] += $item['Luckys_price'];
+                $result['Trader Joes'] += $item['TraderJoes_price'];
+                $result['Foods Co'] += $item['FoodsCo_price'];
+                $result['Mollie Stones Market'] += $item['MollieStonesMarket_price'];
+                $result['Andronicos Community Market'] += $item['AndronicosCommunityMarket_price'];
+                $result['The Real Food Company'] += $item['TheRealFoodCompany_price'];
+                $result['CALA Foods'] += $item['CALAFoods_price'];
+                $result['Lucky Supermarkets'] += $item['LuckySupermarkets_price'];
                 return $result;
                 }, array(
-                    'Safeway_price' => 0,
-                    'Luckys_price' => 0,
-                    'TraderJoes_price' => 0,
-                    'FoodsCo_price' => 0,
-                    'MollieStonesMarket_price' => 0,
-                    'AndronicosCommunityMarket_price' => 0,
-                    'TheRealFoodCompany_price' => 0,
-                    'CALAFoods_price' => 0,
-                    'LuckySupermarkets_price' => 0
+                    'Safeway' => 0,
+                    'Luckys' => 0,
+                    'Trader Joes' => 0,
+                    'Foods Co' => 0,
+                    'Mollie Stones Market' => 0,
+                    'Andronicos Community Market' => 0,
+                    'The Real Food Company' => 0,
+                    'CALA Foods' => 0,
+                    'Lucky Supermarkets' => 0
                     ));
-        log_message('info', 'Totals ' . print_r($totals, true));
+        //log_message('info', 'Totals ' . print_r($totals, true));
 
         // sort the totals array
         asort($totals);
-        log_message('info', 'Totals Sorted' . print_r($totals, true));
+        //log_message('info', 'Totals Sorted' . print_r($totals, true));
+
+        $this->response($totals);
     }
 }
 

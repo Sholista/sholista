@@ -15,7 +15,7 @@
         ?>
 		</div>
         </div>
-        Shoplist: Remove items by dragging to the shelf above
+        Shopping List: Remove items by dragging to the shelf above
         <div style="overflow-x: scroll">
 		<div id="shoplist">
 		</div>
@@ -32,8 +32,10 @@
     <?php include('templates/page_header.php')?>
     </div>
     <div data-role="content">
-    Your Shoplist:
-    <div id="checkoutlist"></div>
+        Your Shopping List:
+        <div id="checkoutlist"></div>
+        Your Shopping Options (cheapest first):
+        <div id="prices"/>
     </div>
     <div data-role="footer">
     </div>
@@ -50,13 +52,22 @@ $('#shop').live('pageshow', function(e, d) {
             });
 
         // post the shoplist to server
-        $.ajax('/index.php/shoplist',
+        $.ajax('/index.php/shoplist?format=json',
                 {
                     type: 'POST',
-                    data: pdata
+                    data: pdata,
+                    dataType: 'json'
                 }
-            ).done(function(msg) {
-                console.log(msg);
+            ).done(function(prices) {
+                $('#prices').html((function() {
+                        var t = '<table><thead><tr><th>Store</th><th>Total</th></th></tr></thead><tbody>';
+                        for (var k in prices) {
+                            t += '<tr><td>' + k + '</td><td>' +
+                                        prices[k] + '</td></tr>';
+                        }
+                        t += '</tbody></table>';
+                        return t;
+                        })());
                 });
 
     });
