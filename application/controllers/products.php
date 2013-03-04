@@ -1,6 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Product extends CI_Controller {
+class Products extends CI_Controller {
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('Product');
+    }
+
 	public function index()
 	{
 	    //SimpleUPCAPI
@@ -58,9 +63,14 @@ class Product extends CI_Controller {
 
 
     public function test() {
+        $p = new Product();
         $header['title'] = 'Shopping Lists that are Awesome - Sholista.com';
+        $header['products'] = $p->all();
+        log_message('info', print_r($header['products'], true));
 		$this->load->view('templates/header', $header);
-		$this->load->view('product');
+		$this->load->view('products', $header);
 		$this->load->view('templates/footer');
     }
 }
+
+?>
